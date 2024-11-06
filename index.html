@@ -21,8 +21,19 @@
         </nav>
     </header>
 
-    <section id="home">
-        <p>This is the Home page</p>
+    <section id="home" class="home">
+        <header class="hero" role="banner" aria-label="Introduction to Accessibility Testing">
+            <h1>Empowering Accessibility in Digital Experiences</h1>
+            <p>Your partner in ensuring an inclusive, accessible web experience for all users.</p>
+            <button onclick="document.getElementById('contact').scrollIntoView()">Get Started</button>
+        </header>
+    
+        <!-- About Section -->
+        <section id="about" class="section" aria-labelledby="about-heading">
+            <h2 id="about-heading">Why Accessibility Testing?</h2>
+            <p>Accessibility testing ensures that digital platforms are usable by people of all abilities. It’s essential for providing an equitable experience to everyone, including users with visual, auditory, and motor impairments.</p>
+            <p>Our approach covers all major accessibility guidelines, including WCAG, Section 508, and MAS standards, ensuring compliance and inclusivity.</p>
+        </section>
 
     </section>
 

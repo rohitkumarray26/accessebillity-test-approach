@@ -65,8 +65,10 @@ h2 {
 h1{
     color:rgb(0, 149, 255)
 }
-#home {
+.home {
     background-color: #f4f4f4;
+    width: screen;
+    height: 100vh;
 }
 
 #about {
