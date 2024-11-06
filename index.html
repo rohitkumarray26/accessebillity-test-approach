@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="#windows"><i class="fa-brands fa-windows"></i>Windows</a></li>
+                <li><a href="#mac"><i class="fa-brands fa-apple"></i>Mac</a></li>
+                <li><a href="#android"><i class="fa-brands fa-android"></i>Android</a></li>
+                <li><a href="#ios"><i class="fa-brands fa-apple"></i>ios</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <p>This is the Home page</p>
+
+    </section>
+
+    <section id="windows">
+        <h1>Windows & Web Accessibility Test Approach</h1>
+        <p>The purpose of this document is to cover the testing approach while performing accessibility testing on Windows/Web platforms.</p>
+        <br>
+        <h2>Accessibility Testing Aspects</h2>
+        <ul>
+            <li>Keyboard Navigation</li>
+            <li>Screen readers (NVDA, JAWS, and Narrator)</li>
+            <li>High contrast modes (e.g., Aquatic, Desert)</li>
+            <li>Text resize (200%) and reflow at (400%) for web, along with Magnifier for Windows</li>
+            <li>Use the Color Contrast Analyzer (CCA Tool) to verify proper contrast</li>
+            <li>Ensure appropriate text spacing using Stylus</li>
+            <li>Voice Access for Windows to confirm accurate command recognition</li>
+            <li>Automated tools like Accessibility Insights for both web and Windows, and Axe Dev Tools specifically for web, to identify accessibility issues</li>
+            <li>Target Size</li>
+        </ul>
+        <br>
+        <br>
+        <h2>1. Keyboard Navigation</h2>
+        <p>Ensure that all interface elements are accessible and operable using only the keyboard, including navigation, activation, and focus management.</p>
+        <ul>
+            <li>Use ‘Tab’ and ‘Shift + Tab’ keys to navigate through the interface.</li>
+            <li>Ensure buttons, links, combo boxes, checkboxes, and radio buttons are functional using ‘Enter’ or ‘Space Bar’.</li>
+            <li>Perform ‘Esc’ key functionality for closing dialogs and combo boxes.</li>
+            <li>Check the visibility of the keyboard indicator and design-related concerns.</li>
+            <li>Ensure arrow keys navigate through list items in combo boxes and menu items.</li>
+            <li>Ensure combo boxes are accessible using <code>Alt + down arrow</code> key.</li>
+            <li>Navigate between sections with <code>F6</code> or <code>ctrl + F6</code>.</li>
+        </ul>
+
+        <br>
+
+        <h3>WCAG Mapping</h3>
+        <p>Depending on the issue, Keyboard bugs will be mapped in the WCAG rules listed below:</p>
+        <ul>
+            <li>WCAG 2.1.1 – Keyboard</li>
+            <li>WCAG 2.4.7 – Focus Visible</li>
+            <li>WCAG 2.4.3 – Focus Order</li>
+            <li>WCAG 1.3.3 – Sensory Characteristics</li>
+            <li>WCAG 2.1.2 – No Keyboard Trap</li>
+            <li>WCAG 2.4.5 – Multiple Ways</li>
+            <li>WCAG 3.2.1 – On Focus</li>
+            <li>WCAG 3.2.2 – On Input</li>
+            <li>WCAG 3.2.3 – Consistent Navigation</li>
+            <li>WCAG 3.2.4 – Consistent Identification</li>
+            <li>WCAG 1.4.13 – Content on Hover or Focus</li>
+        </ul>
+        <br>
+        <br>
+
+        <h2>2. Screen Reader</h2>
+        <p>Verify that screen readers like NVDA, JAWS, and Narrator can accurately announce the name, role, and value of controls, and that navigation is logical.</p>
+        <p>Changing Modes:</p>
+        <ul>
+            <li><a href="https://www.nvaccess.org/download/">NVDA</a> (Version: 2024.3): <code>Insert/Caps Lock + Space Bar</code></li>
+            <li><a href="https://dequeuniversity.com/">Narrator</a>: <code>Insert/Caps Lock + Space Bar</code></li>
+            <li><a href="https://www.freedomscientific.com/Downloads/JAWS">JAWS</a> (Version 2024.2406.121): <code>Insert/Caps Lock +Z</code></li>
+            <ul>
+                <li>Verify semantics are announced properly for the controls.</li>
+                <li><strong>Heading:</strong> Use the <kbd>H</kbd> shortcut to verify the sequential design of headings (e.g., h1 &rarr; h2 &rarr; h3 &rarr; h4 &rarr; h5 &rarr; h6).</li>
+                <li><strong>List:</strong> Use the <kbd>L</kbd> shortcut to check list positioning.</li>
+                <li><strong>List Items:</strong> Use <kbd>I</kbd> shortcut for list items.</li>
+                <li><strong>Landmarks:</strong> Use the <kbd>D</kbd> shortcut to verify landmarks in NVDA and Narrator, and <kbd>R</kbd> for JAWS.</li>
+                <li><strong>Finding Elements:</strong>
+                  <ul>
+                    <li><strong>Links:</strong> <kbd>K</kbd></li>
+                    <li><strong>Buttons:</strong> <kbd>B</kbd></li>
+                    <li><strong>Graphics:</strong> <kbd>G</kbd></li>
+                    <li><strong>Table:</strong> <kbd>T</kbd></li>
+                    <li><strong>Forms:</strong> <kbd>F</kbd></li>
+                    <li><strong>Element’s list:</strong> <kbd>Insert + F7</kbd></li>
+                  </ul>
+                </li>
+              </ul>
+              
+              <h3>WCAG Mapping</h3>
+              <p>Depending on the issue, Screen Reader bugs will be mapped to the following WCAG rules:</p>
+              <ul>
+                <li><strong>WCAG 1.3.1</strong> – Info and Relationships</li>
+                <li><strong>WCAG 4.1.2</strong> – Name, Role, Value</li>
+                <li><strong>WCAG 1.3.2</strong> – Meaningful Sequence</li>
+                <li><strong>WCAG 4.1.3</strong> – Status Messages</li>
+                <li><strong>WCAG 4.2.9</strong> – Execution of Available Actions</li>
+                <li><strong>WCAG 4.2.10</strong> – Tracking of Focus and Selection Attributes</li>
+                <li><strong>WCAG 3.1.1</strong> – Language of Page</li>
+                <li><strong>WCAG 3.1.2</strong> – Language of Parts</li>
+                <li><strong>WCAG 1.1.1</strong> – Non-text Content</li>
+                <li><strong>WCAG 2.4.2</strong> – Page Titled</li>
+                <li><strong>WCAG 1.4.5</strong> – Images of Text</li>
+              </ul>
+              
+        </ul>
+        
+        <br>
+        <br>
+        <h2>3. High Contrast Mode</h2>
+        <h3>Prerequisites</h3>
+        <p>Navigate to <strong>Settings &rarr; Accessibility &rarr; Contrast themes</strong> and select <em>Aquatic</em> or <em>Desert</em> mode.</p>
+
+        <ul>
+        <li>Evaluate the web page in <strong>High Contrast mode</strong> to ensure it meets the needs of low-vision or color-blind users.</li>
+        <li>Confirm that controls are displayed appropriately, for example:
+            <ul>
+            <li>Links appear in <span style="color: blue;">blue</span>.</li>
+            <li>Buttons appear in <span style="color: grey;">grey</span>.</li>
+            </ul>
+        </li>
+        <li>If necessary, use the <strong>Color Contrast Analyzer (CCA)</strong> to check focus indicators or control visibility in High Contrast modes.</li>
+        <li>If an issue occurs in a particular mode (e.g., Aquatic or Desert), cross-verify in <em>Night Sky</em> and <em>Dusk</em> modes.</li>
+        <li>Verify the CCA for controls and text in both Windows High Contrast mode and within application High Contrast settings.</li>
+        </ul>
+
+        <h3>WCAG Mapping</h3>
+        <p>The WCAG rule for High Contrast is as follows:</p>
+        <ul>
+        <li><strong>WCAG 4.3.1</strong> – No Disruption of Accessibility Features</li>
+        </ul>
+        <br>
+        <br>
+
+        <h2>4. Resize/ Reflow Mode</h2>
+        <h3>Text Resize and Reflow Evaluation</h3>
+        <p>Ensure that text can be resized up to <strong>200%</strong> and reflowed at <strong>400%</strong> without any loss of content or functionality. Additionally, verify that Windows applications work seamlessly with the <strong>Magnifier tool</strong>.</p>
+
+        <ul>
+        <li><strong>Prerequisites for Resize/Reflow for Web:</strong>
+            <ol>
+            <li>Set Display resolution to <strong>1280 &times; 1024</strong>.</li>
+            <li>Set Scaling to <strong>100%</strong>.</li>
+            <li>Zoom the Browser to <strong>200%</strong> or <strong>400%</strong>.</li>
+            </ol>
+        </li>
+        <li><strong>For Windows:</strong>
+            <ul>
+            <li>Set Resize to <strong>1280 &times; 768</strong> for general use.</li>
+            <li>Set Reflow to <strong>1024 &times; 768</strong> for testing reflow.</li>
+            </ul>
+        </li>
+        <br />
+
+        <li>Ensure that all controls on the page remain visible and functional without <strong>truncation, overlapping</strong>, or any <strong>content loss</strong>.</li>
+        <br />
+
+        <li><strong>Magnifier (Windows):</strong> Verify the Magnifier functionality using both mouse and keyboard (with Tab keys) across all Windows applications. The default magnification level should be set at <strong>200%</strong>.
+            <ul>
+            <li>Log all issues under <em>Microsoft Accessibility Standards (WCAG) 4.3.1</em>.</li>
+            </ul>
+        </li>
+        </ul>
+        <br>
+        <h3>WCAG Mapping</h3>
+        <p>The WCAG rules for Resize/Reflow are listed below:</p>
+        <ul>
+        <li><strong>WCAG 1.4.4</strong> – Resize Texts</li>
+        <li><strong>WCAG 1.4.10</strong> – Reflow</li>
+        </ul>
+        <br>
+        <br>
+
+        <h2>5. Text Spacing</h2>
+        <p>Use Stylus tool to ensure that text is properly spaced, avoiding truncation, overlapping, or loss of content.</p>
+        <h3>WCAG Mapping</h3>
+        <ul>
+            <li>WCAG 1.4.12 – Text Spacing</li>
+        </ul>
+        <br>
+        <br>
+
+        <h2>6. Automated Tools</h2>
+        <ul>
+        <li>Use <strong>Accessibility Insights for Web and Windows</strong> to identify and resolve accessibility issues.</li>
+        <li>For web testing, additionally use the <strong>Axe Dev Tools</strong> for comprehensive accessibility analysis.</li>
+        </ul>
+        <br>
+        <h3>WCAG Mapping</h3>
+        <p>Depending on the issue, automated tools bugs will be mapped to the following WCAG rules:</p>
+        <ul>
+        <li><strong>WCAG 1.3.1</strong> – Info and Relationships</li>
+        <li><strong>WCAG 4.1.2</strong> – Name, Role, Value</li>
+        <li><strong>WCAG 1.1.1</strong> – Non-text Content</li>
+        <li><strong>WCAG 4.2.6</strong> – Parent-Child Relationships</li>
+        <li><strong>WCAG 2.4.6</strong> – Headings and Labels</li>
+        <li><strong>WCAG 1.4.3</strong> – Contrast (Minimum)</li>
+        </ul>
+        <br>
+        <br>
+
+        <h2>7. Voice Access</h2>
+        <h3>Voice Access Evaluation</h3>
+        <p>When using voice commands such as <em>'show numbers,' 'show names,'</em> and <em>'show grids,'</em> ensure that the correct information is displayed, and the corresponding action is accurately executed upon activation.</p>
+
+        <ul>
+        <li><strong>Reference Link for Voice Access Commands:</strong>
+            <a href="https://support.microsoft.com/en-us/voice-access-command-list" target="_blank">Voice Access Command List - Microsoft Support</a>
+        </li>
+        </ul>
+        <br>
+        <h3>WCAG Mapping</h3>
+        <p>The WCAG rule for Voice Access is listed below:</p>
+        <ul>
+        <li><strong>WCAG 4.3.1</strong> – No Disruption of Accessibility Features</li>
+        </ul>
+        <br>
+        <br>
+
+
+        <h2>8. Manual Color Analysis</h2>
+        <h3>Target Size Evaluation</h3>
+        <p>For testing <strong>Target Size</strong> issues on the web, use the <a href="https://cdpn.io" target="_blank">CodePen - Target Size Bookmarklet</a>.</p>
+
+        <ul>
+        <li>For Windows applications, no automation tool directly addresses 'target size' issues. However, Accessibility Insights can be used to manually inspect the 'Local size' property for each selected element.</li>
+        </ul>
+
+        <p>The size of the target for pointer inputs should meet a minimum of 24 by 24 CSS pixels, except in the following cases:</p>
+
+        <ul>
+        <li><strong>Spacing:</strong> The target offset is at least 24 CSS pixels from any adjacent target.</li>
+        <li><strong>Equivalent:</strong> An alternative control on the same page meets the size criterion.</li>
+        <li><strong>Inline:</strong> The target appears within a sentence or block of text.</li>
+        <li><strong>User Agent Control:</strong> The target size is defined by the user agent, not modified by the author.</li>
+        <li><strong>Essential:</strong> The presentation is necessary or legally required to convey the intended information.</li>
+        </ul>
+        <br>
+
+        <h3>WCAG Mapping</h3>
+        <p>The WCAG rule for Target Size is as follows:</p>
+        <ul>
+        <li><strong>WCAG 2.5.8</strong> – Target Size (Minimum)</li>
+        </ul>
+        <br>
+        <br>
+
+        <h2>9. Target Size (Minimum)</h2>
+        <p>For testing <strong>Target Size</strong> issues on the web, use the 
+            <a href="https://cdpn.io" target="_blank">CodePen - Target Size Bookmarklet</a>.
+        </p>
+    
+        <p>For Windows applications, no automation tool directly supports 'Target Size' issues. However, you can use Accessibility Insights to manually inspect the <em>Local size</em> property for the selected element.</p>
+    
+        <h3>Target Size Requirements</h3>
+        <p>The size of the target for pointer inputs should be at least 24 by 24 CSS pixels, except in the following cases:</p>
+        <ul>
+            <li><strong>Spacing:</strong> The target offset is at least 24 CSS pixels from every adjacent target.</li>
+            <li><strong>Equivalent:</strong> The function can be achieved through a different control on the same page that meets the size criterion.</li>
+            <li><strong>Inline:</strong> The target is within a sentence or block of text.</li>
+            <li><strong>User Agent Control:</strong> The size of the target is determined by the user agent and not modified by the author.</li>
+            <li><strong>Essential:</strong> A specific presentation of the target is essential or legally required to convey the intended information.</li>
+        </ul>
+        <br>
+        <h3>WCAG Mapping</h3>
+        <p>The applicable WCAG rule for Target Size is:</p>
+        <ul>
+            <li><strong>WCAG 2.5.8</strong> – Target Size (Minimum)</li>
+        </ul>
+    </section>
+    <!-- Mac -->
+
+    <section id="mac">
+        <h1>Mac Accessibility Test Approach</h1>
+        <br>
+        <h2>Accessibility Testing Approach on macOS</h2>
+    
+    <p>The purpose of this document is to outline the testing approach for accessibility testing on macOS. The following key accessibility testing aspects are covered:</p>
+    
+    <ul>
+        <li><strong>Keyboard Navigation</strong>: Ensuring that all interactive elements can be accessed and operated using a keyboard.</li>
+        <li><strong>Resize</strong>: Verifying that content and controls are resizable without loss of functionality.</li>
+        <li><strong>Reflow</strong>: Testing that content reflows correctly when resized or zoomed in.</li>
+        <li><strong>Screen Reader (VoiceOver)</strong>: Verifying that the VoiceOver screen reader announces elements correctly and in sequence.</li>
+        <li><strong>Luminosity Ratio (Colour Contrast Analyzer)</strong>: Ensuring sufficient contrast ratios for text and backgrounds.</li>
+        <li><strong>Increase Contrast</strong>: Ensuring that the application adapts well when the system’s increase contrast feature is enabled.</li>
+        <li><strong>Target Size</strong>: Verifying that interactive elements have a minimum target size of 24px by 24px for pointer inputs.</li>
+        <li><strong>Invert Colour (Smart Invert)</strong>: Checking how the application behaves when the system’s color inversion feature is enabled.</li>
+        <li><strong>Voice Control</strong>: Testing the functionality of the application when voice commands are used to interact with it.</li>
+        <li><strong>Text Spacing</strong>: Ensuring that increasing text spacing does not cause content overlap or break functionality.</li>
+        <li><strong>Magnification (Zoom)</strong>: Verifying that the application works well with macOS's magnification/zoom feature.</li>
+        <li><strong>Hover Text for Icons</strong>: Ensuring that icons display descriptive hover text (tooltips) for screen readers and visual users alike.</li>
+    </ul>
+
+    <br>
+    <p>The following are detailed accessibility testing aspects for macOS, covering **Keyboard**, **Resize**, and **Reflow**:</p>
+    
+    <h2>1. Keyboard</h2>
+    <p>To enable keyboard accessibility, turn on Full Keyboard Access from System Settings:</p>
+    <p><strong>Path:</strong> System Preferences > Accessibility > Keyboard > Full Keyboard Access</p>
+    
+    <p><strong>List of Keyboard Commands in Mac:</strong></p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Keyboard Shortcut</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Navigate forward</td>
+                <td>Tab key</td>
+            </tr>
+            <tr>
+                <td>Navigate backward</td>
+                <td>Shift + Tab key</td>
+            </tr>
+            <tr>
+                <td>Activate control</td>
+                <td>Enter / Space key</td>
+            </tr>
+            <tr>
+                <td>Navigate list items</td>
+                <td>Arrow keys</td>
+            </tr>
+            <tr>
+                <td>Close popups/dialogs</td>
+                <td>ESC key</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><strong>WCAG Mapping:</strong> Depending on the issue title, we map the following WCAG rules for Keyboard:</p>
+    <ul>
+        <li>WCAG 2.1.1 – Keyboard</li>
+        <li>WCAG 2.4.7 – Focus Visible</li>
+        <li>WCAG 2.4.3 – Focus Order</li>
+        <li>WCAG 1.3.3 – Sensory Characteristics</li>
+        <li>WCAG 2.1.2 – No Keyboard Trap</li>
+        <li>WCAG 2.4.5 – Multiple Ways</li>
+        <li>WCAG 3.2.1 – On Focus</li>
+        <li>WCAG 3.2.2 – On Input</li>
+        <li>WCAG 3.2.3 – Consistent Navigation</li>
+        <li>WCAG 3.2.4 – Consistent Identification</li>
+        <li>WCAG 1.4.13 – Content on Hover or Focus</li>
+    </ul>
+    <br>
+    <br>
+    <h2>2. Resize</h2>
+    <p>To test resizing, zoom the page to 200% from system settings for the URL:</p>
+    <p><strong>Path:</strong> System Preferences > Displays > Select ‘Scaled’ and choose 200%</p>
+    <p>Refresh the page and check for any disruptions in the layout or content. Additionally, for application resizing, you can turn on Larger Text from the Displays settings:</p>
+    <p><strong>Path:</strong> System Preferences > Displays > Select ‘Larger Text’</p>
+    
+    <p><strong>WCAG Mapping:</strong> The WCAG rule for the Resize is listed below:</p>
+    <ul>
+        <li>WCAG 1.4.4 – Resize Text</li>
+    </ul>
+    <br>
+    <br>
+    <h2>3. Reflow</h2>
+    <p>To test reflow, zoom the page to 300% from system settings for the URL:</p>
+    <p>Refresh the page and check if the content reflows properly without causing horizontal scrolling or content loss.</p>
+    
+    <p><strong>WCAG Mapping:</strong> The WCAG rule for Reflow is listed below:</p>
+    <ul>
+        <li>WCAG 1.4.10 – Reflow</li>
+    </ul>
+    <br>
+    <br>
+
+    <h2>4. Screen Reader (VoiceOver)</h2>
+    <p>We navigate using the VoiceOver screen reader on macOS. To turn on or off VoiceOver, use the keyboard shortcut <strong>Command + F5</strong>.</p>
+    <br>
+    <h3>Different Types of Navigation using VoiceOver</h3>
+    <p>We navigate on the Mac device using VoiceOver (VO) commands. The VO keys are <strong>Control + Option</strong>.</p>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Keyboard Shortcut</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Navigate forward</td>
+                <td>Ctrl + Option + Right arrow key</td>
+            </tr>
+            <tr>
+                <td>Navigate backward</td>
+                <td>Ctrl + Option + Left arrow key</td>
+            </tr>
+            <tr>
+                <td>Move VoiceOver focus under group</td>
+                <td>Ctrl + Option + Shift + Down arrow key</td>
+            </tr>
+            <tr>
+                <td>Move VoiceOver focus out of group</td>
+                <td>Ctrl + Option + Shift + Up arrow key</td>
+            </tr>
+            <tr>
+                <td>Activate control</td>
+                <td>Ctrl + Option + Space key</td>
+            </tr>
+            <tr>
+                <td>Use rotor</td>
+                <td>Ctrl + Option + Command + Right/Left arrow keys</td>
+            </tr>
+            <tr>
+                <td>Navigate rotor controls</td>
+                <td>Ctrl + Option + Command + Up/Down arrow keys</td>
+            </tr>
+            <tr>
+                <td>Navigate list items</td>
+                <td>Ctrl + Option + Up/Down arrow keys</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><strong>Reference:</strong> Get started with VoiceOver on Mac - Apple Support (IN)</p>
+    <p><strong>WCAG Mapping:</strong> Depending on the issue title, we map the following WCAG rules for Screen Readers:</p>
+    <ul>
+        <li>WCAG 1.3.1 – Info and Relationships</li>
+        <li>WCAG 4.1.2 – Name, Role, Value</li>
+        <li>WCAG 1.3.2 – Meaningful Sequence</li>
+        <li>WCAG 4.1.3 – Status Messages</li>
+        <li>WCAG 4.2.9 – Execution of Available Actions</li>
+        <li>WCAG 4.2.10 – Tracking of Focus and Selection Attributes</li>
+        <li>WCAG 3.1.1 – Language of Page</li>
+        <li>WCAG 3.1.2 – Language of Parts</li>
+        <li>WCAG 1.1.1 – Non-text Content</li>
+        <li>WCAG 2.4.2 – Page Titled</li>
+        <li>WCAG 1.4.5 – Images of Text</li>
+    </ul>
+    <br>
+    <h3>Quick Nav</h3>
+    <p>To activate Quick Nav: Turn on VoiceOver and press the left and right arrow keys together.</p>
+    
+    <p>To navigate applications and webpages in Group mode:</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Keyboard Shortcut</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Move left, right, up, or down</td>
+                <td>Arrow keys</td>
+            </tr>
+            <tr>
+                <td>Start interacting with item</td>
+                <td>Right Arrow + Down Arrow</td>
+            </tr>
+            <tr>
+                <td>Stop interacting with item</td>
+                <td>Left Arrow + Down Arrow</td>
+            </tr>
+            <tr>
+                <td>Perform default action</td>
+                <td>Up Arrow + Down Arrow</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p>To navigate webpages in DOM mode:</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Keyboard Shortcut</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Move left or right on page</td>
+                <td>Left Arrow/Right Arrow</td>
+            </tr>
+            <tr>
+                <td>Jump to next/previous item</td>
+                <td>Up Arrow/Down Arrow</td>
+            </tr>
+            <tr>
+                <td>Jump to next/previous list</td>
+                <td>Left Arrow + Up Arrow/Right Arrow + Up Arrow</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><strong>For more navigation controls, refer to:</strong> <a href="https://support.apple.com/en-in/guide/voiceover/welcome/mac" target="_blank">Quick Nav Shortcut key Apple Support</a></p>
+    <br>
+    <h3>Trackpad (Touchpad)</h3>
+    <p>Turn on the Trackpad Commander: Hold down the VoiceOver modifier (Control + Option) and rotate two fingers clockwise anywhere on the trackpad.</p>
+    
+    <p><strong>Navigation:</strong></p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Trackpad Gesture</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Forward navigation</td>
+                <td>Single finger swipe right</td>
+            </tr>
+            <tr>
+                <td>Backward navigation</td>
+                <td>Single finger swipe left</td>
+            </tr>
+            <tr>
+                <td>Activate control</td>
+                <td>Single finger double tap</td>
+            </tr>
+            <tr>
+                <td>Navigate inside group</td>
+                <td>Double finger swipe right</td>
+            </tr>
+            <tr>
+                <td>Navigate outside group</td>
+                <td>Double finger swipe left</td>
+            </tr>
+            <tr>
+                <td>Rotor</td>
+                <td>Two finger clockwise/anticlockwise rotation</td>
+            </tr>
+            <tr>
+                <td>Navigate rotor controls</td>
+                <td>Single finger swipe up/down</td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <h2>5. Luminosity Ratio</h2>
+    <p>Tool: Colour Contrast Analyzer</p>
+    <p>Check on Default Mode. Take the ratio of foreground and background colors. Check for large text, smaller text, and controls.</p>
+    <p><strong>Download from:</strong> <a href="https://www.tpgi.com/color-contrast-checker/" target="_blank">Colour Contrast Analyzer - TPGi</a></p>
+    
+    <p><strong>WCAG Mapping:</strong> Depending on the issue title, we map the following WCAG rules for Luminosity Ratio:</p>
+    <ul>
+        <li>WCAG 1.4.3 – Contrast (Minimum)</li>
+        <li>WCAG 1.4.11 – Non-text Contrast</li>
+    </ul>
+
+    <p><strong>Note:</strong> When the Luminosity ratio fails in default mode, turn on Increase Contrast and check for the ratio. Mention the observation in the bug.</p>
+    <br><br>
+    <h2>6. Increase Contrast</h2>
+    <p>Turn on ‘Increase Contrast’ from System Settings:</p>
+    <p><strong>Path:</strong> System Preferences > Accessibility > Display > ‘Increase Contrast’ toggle on. Check if the ‘Increase Contrast’ setting is applied or not.</p>
+    
+    <p><strong>WCAG Mapping:</strong> WCAG rule for Increase Contrast is listed below:</p>
+    <ul>
+        <li>WCAG 4.3.1 – No Disruption of Accessibility Features</li>
+    </ul>
+    <br><br>
+    <h2>7. Target Size</h2>
+    <p>To check Target Size on Mac: Open Xcode and open the Developer tool, then use the Accessibility Inspector.</p>
+    
+    <p><strong>WCAG Mapping:</strong> WCAG rule for Target Size is listed below:</p>
+    <ul>
+        <li>WCAG 2.5.8 – Target Size (Minimum)</li>
+    </ul>
+    <br>
+    <br>
+    <h2>8. Invert Colors</h2>
+    <p>Invert the colors from System Settings:</p>
+    <p><strong>Path:</strong> System Preferences > Accessibility > Display > ‘Smart Invert Colours’ toggle on. Check for any issues.</p>
+    
+    <p><strong>WCAG Mapping:</strong> WCAG rule for Invert Colors is listed below:</p>
+    <ul>
+        <li>WCAG 4.3.1 – No Disruption of Accessibility Features</li>
+    </ul>
+    <br>
+    <br>
+    <h2>9. Voice Control</h2>
+    <p>Voice Control allows hands-free control of the system through voice commands. To turn on Voice Control, go to:</p>
+    <p><strong>Path:</strong> System Preferences > Accessibility > Voice Control > ‘Voice Control’ toggle on.</p>
+    
+    <h3>Commands for Voice Control Testing</h3>
+    <p>Here are some commands to test Voice Control functionality:</p>
+    
+    <h4>1. Navigating the Interface:</h4>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Testing Method</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Open [App Name]</td>
+                <td>Test via Voice Control</td>
+            </tr>
+            <tr>
+                <td>Show Grid</td>
+                <td>Display numbered grid</td>
+            </tr>
+            <tr>
+                <td>Click [Item Name]</td>
+                <td>Ensure labeled for voice recognition</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>2. Testing Web Navigation:</h4>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Testing Method</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Click Link</td>
+                <td>Verify hyperlink navigation</td>
+            </tr>
+            <tr>
+                <td>Scroll Up/Down</td>
+                <td>Check scroll functionality</td>
+            </tr>
+            <tr>
+                <td>Go Back/Go Forward</td>
+                <td>Test page navigation</td>
+            </tr>
+            <tr>
+                <td>Zoom In/Out</td>
+                <td>Test content resizing</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>3. Form Field Interactions:</h4>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Testing Method</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Click Text Field</td>
+                <td>Confirm form field selection</td>
+            </tr>
+            <tr>
+                <td>Type [Text]</td>
+                <td>Test typing and dictation accuracy</td>
+            </tr>
+            <tr>
+                <td>Select All/Delete That</td>
+                <td>Verify text editing capabilities</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>4. Testing Accessibility in Apps:</h4>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Testing Method</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Click [Button Name]</td>
+                <td>Ensure button accessibility and labeling</td>
+            </tr>
+            <tr>
+                <td>Show Numbers</td>
+                <td>Check clickable element numbering</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p><strong>Reference:</strong> <a href="https://support.apple.com/en-us/guide/mac-help/mchlp2591/mac" target="_blank">Use Voice Control on your Mac - Apple Support</a></p>
+
+    <p><strong>WCAG Mapping:</strong> WCAG rule for Voice Control is listed below:</p>
+    <ul>
+        <li>WCAG 4.3.1 – No Disruption of Accessibility Features</li>
+    </ul>
+    <br><br>
+    <h2>10. Text Spacing</h2>
+    <p>Add the Bookmarklet to the bookmarks of the Safari browser.</p>
+    <p><strong>Link for the Bookmarklet:</strong> <a href="https://codepen.io" target="_blank">Text Spacing Bookmarklet (CodePen)</a></p>
+    
+    <p><strong>WCAG Mapping:</strong> WCAG rule for Text Spacing is listed below:</p>
+    <ul>
+        <li>WCAG 1.4.12 – Text Spacing</li>
+    </ul>
+    <br><br>
+    <h2>11. Magnification (Zoom)</h2>
+    <p>Zoom the screen from the accessibility settings.</p>
+    <p><strong>Path:</strong> System Preferences > Accessibility > Zoom > Use Keyboard shortcuts to zoom toggle on > Zoom style (Magnification) > select ‘Full Screen’ control.</p>
+    
+    <p>Verify using Keyboard and Mouse:</p>
+    <ul>
+        <li>To Zoom in: Option + Command + ‘+’</li>
+        <li>To Zoom out: Option + Command + ‘-’</li>
+    </ul>
+    
+    <p><strong>Reference:</strong> <a href="https://discussions.apple.com/thread/251135993?sortBy=rank" target="_blank">Apple Discussions - Zoom Feature</a></p>
+    
+    <p><strong>WCAG Mapping:</strong> WCAG rule for Magnification (Zoom) is listed below:</p>
+    <ul>
+        <li>WCAG 1.4.10 Addendum – Reflow – Teams Min Effective Pixel Size</li>
+    </ul>
+    <br><br>
+    <h2>12. Hover Text for Icons</h2>
+    <p>To test Hover Text for icons, follow these steps:</p>
+    <p><strong>Path:</strong> System Preferences > Accessibility > Zoom > ‘Hover Text for the icons’ toggle on.</p>
+    
+    <p><strong>Testing Method:</strong> Navigate on the control/text using the mouse and hover on it. Press the ‘Command’ key to view instructions about the control/text.</p>
+    
+
+    </section>
+    <!-- Android -->
+
+    <section id="android">
+        <h1>Android Accessibility Test Approach</h1>
+        <br>
+        <p>This document details the testing approach for performing accessibility testing on the Android platform, addressing the following key aspects:</p>
+
+    <ul>
+        <li>Screen Reader (TalkBack)</li>
+        <li>Keyboard Navigation (Bluetooth Keyboard)</li>
+        <li>Text Resize Mode</li>
+        <li>High Contrast (Colour Inversion)</li>
+        <li>Colour Contrast</li>
+        <li>Magnification</li>
+        <li>Orientation (Landscape Mode)</li>
+        <li>Voice Access</li>
+        <li>Touch Target Size</li>
+    </ul>
+    <br>
+    <h2>1. Screen Reader: TalkBack</h2>
+    <p><strong>TalkBack Verbosity:</strong> High (default)</p>
+    <br>
+    <h3>How to turn on TalkBack on an Android device:</h3>
+    <ol>
+        <li>Using the Settings Application: Path: <strong>Settings > Accessibility > TalkBack > Toggle On</strong></li>
+        <li>If Shortcut is enabled:
+            <ul>
+                <li>Press and hold both volume keys (Volume Up and Volume Down) simultaneously for about 3 seconds.</li>
+                <li>Press and hold the Power button.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <p>Ensure that TalkBack accurately announces all required information while navigating on interactive elements (buttons, links, images) and text content. Ensure that navigation is logical.</p>
+    <br>
+    <h3>Additional Features Evaluated with TalkBack:</h3>
+    
+    <h4>Navigation with Keyboard + Screen Reader</h4>
+    <p><strong>Bluetooth Keyboard + TalkBack:</strong> This method involves using a Bluetooth keyboard with TalkBack. Ensure all the content present on the screen is accessible while navigating with Bluetooth Keyboard + TalkBack and that TalkBack is announcing the correct information.</p>
+    
+    <h5>Navigation Keys for TalkBack using Bluetooth keyboard:</h5>
+    <ul>
+        <li>Navigate to next item: <strong>Alt + right arrow</strong></li>
+        <li>Navigate to previous item: <strong>Alt + left arrow</strong></li>
+        <li>Activate any control: <strong>Alt + enter</strong></li>
+        <li>Go back: <strong>Alt + backspace</strong></li>
+        <li>Navigate to first item: <strong>Alt + ctrl + left arrow</strong></li>
+        <li>Navigate to last item: <strong>Alt + ctrl + right arrow</strong></li>
+        <li>Touch and hold the focused element: <strong>Alt + shift + enter</strong></li>
+    </ul>
+    <p><a href="https://support.google.com/accessibility/android/answer/6283677?hl=en">Reference Link: Use TalkBack keyboard shortcuts - Android Accessibility Help</a></p>
+
+    <h4>Reading Control</h4>
+    <p><strong>How to cycle among different reading modes:</strong></p>
+    <ul>
+        <li>With TalkBack: Swipe Right/Left with three fingers to select a reading mode.</li>
+        <li>Use swipe up / down gestures with one finger to navigate in the selected reading mode.</li>
+        <li>With TalkBack + Bluetooth Keyboard: Use <strong>Alt + Shift + Ctrl + Up/Down</strong> arrow keys to select a reading mode.</li>
+        <li>Use <strong>Alt + Shift + Up/Down</strong> arrow keys to navigate in the selected reading mode.</li>
+    </ul>
+
+    <p><strong>Different types of Reading controls:</strong></p>
+    <ul>
+        <li>Characters: Read by character (Swipe down for next, up for previous).</li>
+        <li>Words: Read by word (Swipe down for next, up for previous).</li>
+        <li>Lines: Read by line (Swipe down for next, up for previous).</li>
+        <li>Paragraphs: Read by paragraph (Swipe down for next, up for previous).</li>
+        <li>Headings: Jump between headings.</li>
+        <li>Controls: Jump between interactive elements (buttons, text fields).</li>
+        <li>Links: Jump between links.</li>
+        <li>Speech Rate: Adjust TalkBack speed (Swipe up to increase, down to decrease).</li>
+        <li>Spoken Language: Switch text-to-speech language (if available).</li>
+    </ul>
+    <p><a href="https://support.google.com/accessibility/android/answer/6283677?hl=en">Reference Website: Use the TalkBack menu & reading controls - Android Accessibility Help</a></p>
+
+    <h4>Touch Exploration</h4>
+    <p>This is not used as the default test matrix. When we encounter any issue related to a control not accessible via swipe gesture, we verify using Touch Exploration and mention its behavior in the observation.</p>
+    <p><strong>How to test using Touch Exploration:</strong> Touch the screen with your finger and keep it there. As you drag your finger around, TalkBack will announce the items or elements that your finger is currently over.</p>
+    <p><strong>Prerequisites:</strong> Settings > Accessibility > TalkBack > Toggle On.</p>
+    <p><a href="https://support.google.com/accessibility/android/answer/6283677?hl=en">Reference Link: Navigate your device with TalkBack - Android Accessibility Help</a></p>
+
+    <p><strong>WCAG Mapping:</strong> Depending on the issue, Screen Readers bugs will be mapped in the WCAG rules listed below.</p>
+    <ul>
+        <li>WCAG 1.1.1 – Non-text Content</li>
+        <li>WCAG 1.3.1 – Info and Relationships</li>
+        <li>WCAG 1.3.2 – Meaningful Sequence</li>
+        <li>WCAG 1.3.5 – Identify Input Purpose</li>
+        <li>WCAG 1.4.5 – Images of Text</li>
+        <li>WCAG 2.4.2 – Page Titled</li>
+        <li>WCAG 2.4.4 – Link Purpose (In Context)</li>
+        <li>WCAG 2.4.6 – Headings and Labels</li>
+        <li>WCAG 2.5.3 – Label in Name</li>
+        <li>WCAG 3.1.1 – Language of Page</li>
+        <li>WCAG 3.1.2 – Language of Parts</li>
+        <li>WCAG 3.3.2 – Labels or Instructions</li>
+        <li>WCAG 3.3.3 – Error Suggestion</li>
+        <li>WCAG 4.1.2 – Name, Role, Value</li>
+        <li>WCAG 4.1.3 – Status Messages</li>
+        <li>WCAG 4.2.9 – Execution of Available Actions</li>
+        <li>WCAG 4.2.10 – Tracking of Focus and Selection Attributes</li>
+    </ul>
+    <br><br>
+    <h2>2. Keyboard Navigation: Bluetooth Keyboard</h2>
+    <p><strong>Keyboard Only Navigation:</strong> This method involves testing with a standard Bluetooth keyboard connected to the device without TalkBack. Ensure all the actionable and interactive controls are accessible while navigating with the Bluetooth keyboard.</p>
+    <br>
+    <h3>Navigation Keys:</h3>
+    <ul>
+        <li>Navigate to next item: <strong>Tab Key</strong></li>
+        <li>Navigate to previous item: <strong>Shift + Tab Key</strong></li>
+        <li>Activate any Control: <strong>Enter Key</strong></li>
+        <li>Close Dialog: <strong>Esc Key</strong></li>
+    </ul>
+    <p><a href="https://support.google.com/accessibility/android/answer/6283677?hl=en">Link for the Website: Use TalkBack keyboard shortcuts - Android Accessibility Help</a></p>
+
+    <p><strong>WCAG Mapping:</strong> Depending on the issue, Keyboard bugs will be mapped in the WCAG rules listed below.</p>
+    <ul>
+        <li>WCAG 1.3.2 – Meaningful Sequence</li>
+        <li>WCAG 1.3.3 – Sensory Characteristics</li>
+        <li>WCAG 1.4.13 – Content on Hover or Focus</li>
+        <li>WCAG 2.1.1 – Keyboard</li>
+        <li>WCAG 2.1.2 – No Keyboard Trap</li>
+        <li>WCAG 2.4.3 – Focus Order</li>
+        <li>WCAG 2.4.5 – Multiple Ways</li>
+        <li>WCAG 2.4.7 – Focus Visible</li>
+        <li>WCAG 3.2.1 – On Focus</li>
+        <li>WCAG 3.2.2 – On Input</li>
+        <li>WCAG 3.2.3 – Consistent Navigation</li>
+        <li>WCAG 3.2.4 – Consistent Identification</li>
+    </ul>
+    <br>
+    <br>
+    <h2>3. Text Resize Mode</h2>
+    <p>Ensure that all controls present on the page are properly visible without getting truncated, overlapped, or any content loss.</p>
+    <p><strong>Prerequisite:</strong> Settings > Display > Font Size and Style > Font Size > Drag to the Maximum.</p>
+    <p><a href="https://support.google.com/accessibility/android/answer/6283677?hl=en">Reference Link: Change text & display settings - Android Accessibility Help</a></p>
+    <p><strong>WCAG Mapping:</strong> WCAG rule for the Resize/Reflow listed below.</p>
+    <ul>
+        <li>WCAG 1.4.4 – Resize Text</li>
+    </ul>
+    <br><br>
+    <h2>4. High Contrast (Colour Inversion)</h2>
+    <p><strong>Ensure that the controls present on any application or page are adapting to the appropriate colour.</strong></p>
+    <p>Controls present on screen should be properly visible after applying ‘Colour Inversion’.</p>
+    <p><strong>Prerequisite:</strong> Settings > Accessibility > Vision Enhancement > Colour Inversion > Toggle On.</p>
+    <p><a href="https://support.google.com/accessibility/android/answer/6283677?hl=en">Reference link: Turn on Dark theme & color inversion - Android Accessibility Help</a></p>
+    <p><strong>WCAG Mapping:</strong> WCAG rule for the High Contrast listed below.</p>
+    <ul>
+        <li>WCAG 4.3.1 – No Disruption of Accessibility Features</li>
+    </ul>
+    <br><br>
+    <h2>5. Colour Contrast</h2>
+    <p><strong>Tool:</strong> Accessibility Scanner</p>
+    <p>Use Accessibility Scanner tool to evaluate Colour Contrast issues.</p>
+    <p><strong>Note:</strong></p>
+    <ul>
+        <li>Verify Colour Contrast in both Light and Dark modes.</li>
+        <li>Verify Colour Contrast after applying High Contrast fonts and mention the behavior in observation.</li>
+    </ul>
+    <p><a href="https://www.youtube.com/watch?v=I0DWjwp5Iuw">Reference link: How to use Accessibility Scanner - YouTube</a></p>
+    <p><strong>WCAG Mapping:</strong> WCAG rules for the Colour contrast issues are listed below.</p>
+    <ul>
+        <li>WCAG 1.4.3 – Contrast (Minimum)</li>
+        <li>WCAG 1.4.11 – Non-text Contrast</li>
+    </ul>
+    <br><br>
+    <h2>6. Magnification</h2>
+    <p>Ensure that the content on the screen adapts magnification settings and is properly visible as enlarged.</p>
+    <p><strong>Prerequisites:</strong> Settings > Vision Enhancements > Magnification.</p>
+    <p><a href="https://support.google.com/accessibility/android/answer/6283677?hl=en">Reference link: Use magnification on your screen - Android Accessibility Help</a></p>
+    <p><strong>WCAG Mapping:</strong> WCAG rule for the Target Size is listed below.</p>
+    <ul>
+        <li>WCAG 4.3.1 – No Disruption of Accessibility Features</li>
+    </ul>
+    <br><br>
+    <h2>7. Orientation (Landscape Mode)</h2>
+    <p>Ensure that the application properly adjusts when switching between portrait and landscape orientations.</p>
+    <p><strong>Verify that all UI elements and content adapt seamlessly without any truncation, overlapping, or misalignment.</strong></p>
+    <p><strong>Prerequisite:</strong> Settings > Display > Auto-rotate screen > Toggle On.</p>
+    <p><strong>Note:</strong> We also verify the orientation mode functionality after applying the 'Large Text' setting.</p>
+    <p><strong>WCAG Mapping:</strong> WCAG rule for the Orientation is listed below.</p>
+    <ul>
+        <li>WCAG 1.3.4 – Orientation</li>
+    </ul>
+    <br><br>
+    <h2>8. Voice Access</h2>
+    <p>Ensure all the controls present on the screen are accessible with Voice Access commands.</p>
+    <p>When using voice commands like 'show numbers,' 'show names,' and 'show grids,' the correct information should be displayed, and the corresponding action should be executed upon activation.</p>
+    <h4>Basic commands for Voice Access:</h4>
+    <ul>
+        <li>Close voice access: <strong>Turn off voice access</strong></li>
+        <li>Stop voice access</li>
+        <li>Exit voice access</li>
+        <li>Quit voice access</li>
+        <li>Open a new app: <strong>Open &lt;app name&gt;</strong></li>
+        <li>Start &lt;app name&gt;</li>
+        <li>Show &lt;app name&gt;</li>
+        <li>Select an item: <strong>Click &lt;item name&gt;</strong></li>
+        <li>Perform Click: <strong>Click</strong></li>
+        <li>Perform click and long press: <strong>Tap and hold</strong></li>
+    </ul>
+
+    <p><strong>How to turn on Voice Access on an Android device:</strong> Settings > Accessibility > Interaction and dexterity > Voice Access > Toggle On.</p>
+    <p><a href="https://support.microsoft.com/en-us/office/voice-access-commands-1ec8a7a7-1b89-4a50-8a77-c501fcb3c8c4">Reference Link for voice access commands: Voice access command list - Microsoft Support.</a></p>
+    <p><strong>WCAG Mapping:</strong> WCAG rule for Voice access is listed below.</p>
+    <ul>
+        <li>WCAG 4.3.1 – No Disruption of Accessibility Features</li>
+        <li>WCAG 2.5.3 – Label in Name</li>
+    </ul>
+    <br><br>
+    <h2>9. Target Size (Minimum)</h2>
+    <p><strong>Tool:</strong> Accessibility Scanner</p>
+    <p>Use Accessibility Scanner tool to verify Touch Target Size issues.</p>
+    <p>Ensure all interactive elements on the screen are large enough to be easily tapped or activated without accidental errors.</p>
+    <p><strong>Exceptions:</strong></p>
+    <ul>
+        <li>The target is available through an equivalent control that meets the size requirement.</li>
+        <li>The target is inline (e.g., a link in a sentence).</li>
+        <li>The specific size is essential for the presentation of the content.</li>
+        <li>Spacing Between Elements: Ensure there is adequate spacing around targets to prevent accidental activation of nearby elements, providing a clearer touchable area.</li>
+    </ul>
+    <p><strong>Prerequisite:</strong> Change to 24px from Accessibility Scanner settings.</p>
+    <p><strong>Path to change the setting:</strong> Open Accessibility Scanner application > Activate ‘More Option’ button > Select ‘Settings’ > Click Target Size and give input as 24.</p>
+    <p><strong>WCAG Mapping:</strong> WCAG rule for the Target Size is listed below.</p>
+    <ul>
+        <li>WCAG 2.5.8 - Target Size (Minimum)</li>
+    </ul>
+    </section>
+
+     <!-- Android -->
+
+
+     <section id="ios">
+        <h1>ios Accessibility Test Approach</h1>
+        <br>
+        <p>We Address below accessibility testing aspects in iOS:</p>
+        <ul>
+            <li>Screen Reader (Voiceover)</li>
+            <li>Keyboard Navigation (Bluetooth Keyboard)</li>
+            <li>Screen Zoom</li>
+            <li>High Contrast</li>
+            <li>Color Contrast</li>
+            <li>Orientation</li>
+            <li>Voice Control</li>
+            <li>Target Size</li>
+        </ul>
+        <br>
+
+        <h3>1. Screen Reader (Voiceover)</h3>
+        <p>Voiceover is used to navigate on screen contents (Buttons, links, headings, etc.) and verify that information related to content/controls is properly announced while navigating with swipe gestures. We also verify the issues related to the Voiceover focus order, ensuring it lands on all the controls.</p>
+
+        <h4>Additional Settings Used with Voiceover:</h4>
+        <h5>a. Verbosity</h5>
+        <p>Testing is performed at the default verbosity level. <br>
+        Path: Go to the Settings app, then navigate to Accessibility &gt; Voiceover &gt; Speech &gt; Verbosity.</p>
+
+        <h5>b. Rotor</h5>
+        <p>To use the Rotor with Voiceover on an iPhone, place two fingers on the screen and rotate them clockwise. Select a Rotor option like "Headings" or "Links," then swipe up or down to navigate through items based on the selected option.</p>
+        <p>To configure the Rotor, go to the Settings app, then navigate to Accessibility &gt; Voiceover &gt; Rotor. Select the desired navigation options to include in the Rotor menu and adjust them as needed.</p>
+
+        <h5>c. Audio Ducking</h5>
+        <p>By default, it is turned ON. If any announcement-related issues are encountered, we check the behavior with Audio Ducking turned on and mention the same in the observation. <br>
+        Path to activate it: Go to the Settings app, then navigate to Accessibility &gt; Voiceover &gt; Audio &gt; ‘Audio Ducking’ switch on.</p>
+
+        <h5>d. Screen Recognition</h5>
+        <p>Path to activate it: Go to the Settings app, then navigate to Accessibility &gt; Voiceover &gt; Screen Recognition.</p>
+        <p>By default, it is turned off. If any Voiceover issues such as name, role, state, status message, text-content, or dialog/pop-up alert information are not announced, the behavior with Screen Recognition is mentioned in the observation.</p>
+
+        <p><strong>Reference/Source Link:</strong> <a href="https://support.apple.com/guide/iphone/turn-on-and-practice-voiceover-iph8b4c1ab0e/ios" target="_blank">Turn on and practice VoiceOver on iPhone</a></p>
+
+        <h4>WCAG Mapping for Screen Reader (Voiceover) Issues</h4>
+        <ul>
+            <li>WCAG 1.1.1 – Non-text Content</li>
+            <li>WCAG 1.3.1 – Info and Relationships</li>
+            <li>WCAG 1.3.2 – Meaningful Sequence</li>
+            <li>WCAG 1.3.5 – Identify Input Purpose</li>
+            <li>WCAG 1.4.5 – Images of Text</li>
+            <li>WCAG 2.4.2 – Page Titled</li>
+            <li>WCAG 2.4.4 – Link Purpose (In Context)</li>
+            <li>WCAG 2.4.6 – Headings and Labels</li>
+            <li>WCAG 2.5.3 – Label in Name</li>
+            <li>WCAG 3.1.1 – Language of Page</li>
+            <li>WCAG 3.1.2 – Language of Parts</li>
+            <li>WCAG 3.3.2 – Labels or Instructions</li>
+            <li>WCAG 3.3.3 – Error Suggestion</li>
+            <li>WCAG 4.1.2 – Name, Role, Value</li>
+            <li>WCAG 4.1.3 – Status Messages</li>
+            <li>WCAG 4.2.9 – Execution of Available Actions</li>
+            <li>WCAG 4.2.10 – Tracking of Focus and Selection Attributes</li>
+        </ul>
+        <br><br>
+
+        <h2>2. Keyboard Navigation (Bluetooth Keyboard)</h2>
+        <p>Ensure that all interface elements are fully accessible and functional using keyboard navigation, both with and without Voiceover. This includes moving through the interface, selecting items, and verifying the focus order. During testing, we use:</p>
+        <ul>
+            <li>A Bluetooth keyboard alone for navigation.</li>
+            <li>A Bluetooth keyboard in combination with Voiceover.</li>
+        </ul>
+        
+        <h4>Keyboard Navigation Keys without Voiceover (Bluetooth Keyboard Only):</h4>
+        <ul>
+            <li>Navigate to next item: <strong>Tab Key</strong></li>
+            <li>Navigate to previous item: <strong>Shift + Tab Key</strong></li>
+            <li>Move to next item: <strong>Ctrl + Tab key</strong></li>
+            <li>Move to previous item: <strong>Ctrl + Shift + Tab key</strong></li>
+            <li>Activate any Control: <strong>Enter key</strong></li>
+            <li>Close any dialog, popup, or panel: <strong>Esc Key</strong></li>
+        </ul>
+        <p>For additional commands, refer to the iPhone settings app: <br>
+        <strong>Path:</strong> Settings → Accessibility → Keyboard → Full Keyboard Access → Commands (Commands without Voiceover page).</p>
+
+        <h4>WCAG Mapping for Keyboard Navigation:</h4>
+        <ul>
+            <li>WCAG 1.3.2 – Meaningful Sequence</li>
+            <li>WCAG 1.3.3 – Sensory Characteristics</li>
+            <li>WCAG 1.4.13 – Content on Hover or Focus</li>
+            <li>WCAG 2.1.1 – Keyboard</li>
+            <li>WCAG 2.1.2 – No Keyboard Trap</li>
+            <li>WCAG 2.4.3 – Focus Order</li>
+            <li>WCAG 2.4.5 – Multiple Ways</li>
+            <li>WCAG 2.4.7 – Focus Visible</li>
+            <li>WCAG 3.2.1 – On Focus</li>
+            <li>WCAG 3.2.2 – On Input</li>
+            <li>WCAG 3.2.3 – Consistent Navigation</li>
+            <li>WCAG 3.2.4 – Consistent Identification</li>
+        </ul>
+
+        <h4>Keyboard Navigation Keys with Voiceover:</h4>
+        <ul>
+            <li>Navigate to next item: <strong>Ctrl + Option + Right Arrow</strong></li>
+            <li>Navigate to previous item: <strong>Ctrl + Option + Left Arrow</strong></li>
+            <li>Activate any Control: <strong>Ctrl + Option + Spacebar</strong></li>
+            <li>Close any dialog, popup, or panel: <strong>Esc</strong></li>
+            <li>Touch and hold the focused element: <strong>Ctrl + Option + Shift + M</strong></li>
+            <li>Move Voiceover focus into a group: <strong>Ctrl + Option + Shift + Down Arrow</strong></li>
+            <li>Move Voiceover focus out of a group: <strong>Ctrl + Option + Shift + Up Arrow</strong></li>
+            <li>Use the rotor (Select any option): <strong>Ctrl + Option + Right/Left Arrow</strong></li>
+            <li>Navigate within rotor controls: <strong>Ctrl + Option + Up/Down Arrow</strong></li>
+            <li>Navigate among list items: <strong>Ctrl + Option + Up/Down Arrow</strong></li>
+        </ul>
+        <p>For additional keys, refer to the official Apple Support page: <br>
+        <strong><a href="https://support.apple.com/en-in/guide/iphone/use-voiceover-on-iphone-with-an-apple-external-keyboard-iph8fd35862b/ios" target="_blank">Use Voiceover on iPhone with an Apple external keyboard</a></strong></p>
+        <br><br>
+        <h2>3. Screen Zoom</h2>
+        <p>We apply Zoom and Larger Text settings to verify that content remains clearly visible without getting truncated or overlapped.</p>
+
+        <h3>1. Zoom Feature:</h3>
+        <p>To navigate with Zoom on an iPhone, use a three-finger drag to move around the screen while zooming in. To zoom in or out, double-tap with three fingers.</p>
+        <p><strong>Path:</strong> Settings → Accessibility → Zoom → Zoom page (Enable the zoom controller).</p>
+
+        <h3>2. Larger Text Feature:</h3>
+        <p>The Larger Text setting increases text size for better readability. After applying it, we verify that the contents are adopting the required setting and appear as enlarged text.</p>
+        <p><strong>Path:</strong> Settings → Accessibility → Display & Text Size → Larger Text (Disable "Large Sizes" and drag the slider all the way).</p>
+
+        <p><strong>Note:</strong><br>
+        When testing 'Larger Text,' set the text size to 235% by swiping down from the top-right corner of the screen to access the Control Center and activate large text control.</p>
+
+        <p><strong>Reference/Source Link:</strong> <a href="https://support.apple.com/en-us/HT202470" target="_blank">Zoom feature and Larger text</a></p>
+
+        <h4>WCAG Mapping for Screen Zoom:</h4>
+        <ul>
+            <li>WCAG 1.4.4 – Resize Text</li>
+            <li>WCAG 4.3.1 – No Disruption of Accessibility Features</li>
+        </ul>
+
+        <br><br>
+        <h2>4. High Contrast</h2>
+        <p>When evaluating the high contrast feature, we follow these steps:</p>
+        <ul>
+            <li>Access the web page or application in High Contrast mode to ensure it accommodates the needs of users with low vision or color blindness.</li>
+            <li>Verify that all controls, such as links, switches, radio groups, buttons, and text content, should inherit the high contrast color and be easily readable.</li>
+            <li>If an issue is found in one mode (e.g., Smart mode), we cross-check it in other modes (Classic mode) and mention it in the observation.</li>
+        </ul>
+
+        <h4>Steps to Enable High Contrast on an iPhone:</h4>
+        <p><strong>Path:</strong> Settings → Accessibility → Display and Text Size → Smart/Classic Invert</p>
+
+        <h4>For Increased Contrast:</h4>
+        <p>The increased contrast setting enhances visibility by adjusting the contrast between text and its background for better readability.</p>
+        <p><strong>Path:</strong> Settings → Accessibility → Display and Text Size → Increase Contrast</p>
+
+        <h4>WCAG Mapping for High Contrast:</h4>
+        <ul>
+            <li>WCAG 4.3.1 – No Disruption of Accessibility Features</li>
+        </ul>
+        <br><br>
+        <h2>5. Color Contrast</h2>
+        <p>We verify color contrast ratios on an iPhone to ensure that text and elements are easily readable.</p>
+        <p>We manually check the luminosity ratio using the CCA Tool (developed by Deque Systems) by taking a screenshot of the required screen. The screenshot is uploaded to the color contrast application, where we select the foreground and background colors of the required control/text content.</p>
+        <p><strong>Reference/Source Link:</strong> <a href="https://www.deque.com/contrast-checker/" target="_blank">Testing Color Contrast in Mobile Apps</a></p>
+
+        <h4>For Increased Contrast:</h4>
+        <p>In Increased Contrast, we check the default testing settings and manually verify the luminosity ratio.</p>
+        <p><strong>Path:</strong> Settings → Accessibility → Display and Text Size → Increase Contrast</p>
+
+        <h4>WCAG Mapping for Color Contrast:</h4>
+        <ul>
+            <li>WCAG 1.4.3 – Contrast (Minimum)</li>
+            <li>WCAG 1.4.11 – Non-text Contrast</li>
+        </ul>
+        <br><br>
+        <h2>6. Orientation</h2>
+        <p>Make sure the Portrait Orientation Lock is turned off, then rotate your iPhone horizontally to switch to Landscape mode.</p>
+        <p>In Landscape mode, we verify that all page content, including controls, should be properly visible, as it is in Portrait mode.</p>
+        <p><strong>Reference/Source Link:</strong> <a href="https://support.apple.com/guide/iphone/rotate-the-screen-iph3f7f43f9d/ios" target="_blank">iPhone Screen Rotation</a></p>
+
+        <h4>WCAG Mapping for Orientation:</h4>
+        <ul>
+            <li>WCAG 1.3.4 – Orientation</li>
+        </ul>
+        <br><br>
+        <h2>7. Voice Control</h2>
+        <p>We perform voice control testing to verify that contents are accessible with voice commands. Voice control allows users to navigate and control their device using voice commands, which improves accessibility for individuals with mobility impairments and enhances productivity for all users.</p>
+        
+        <h3>Basic Commands to Use Voice Control:</h3>
+        <ul>
+            <li><strong>Show/Hide Numbers:</strong> Say "Show numbers" to activate item numbers, then speak the number you wish to select. Say "Hide numbers" to turn off item numbers.</li>
+            <li><strong>Show/Hide Names:</strong> Say "Show names" to activate item names, then say "Click" followed by the name to select an item. Say "Hide names" to turn off item names.</li>
+            <li><strong>Punctuation, Symbols, and Emojis:</strong> Say the name of the punctuation mark, symbol, or emoji you want (e.g., "question mark," "percent sign," "happy emoji").</li>
+            <li><strong>Text Navigation and Selection:</strong> Use commands like “Move up two sentences,” “Move forward one paragraph,” “Select previous word,” or “Select next paragraph” to navigate and select text.</li>
+            <li><strong>Text Formatting:</strong> Use commands like “Bold that,” “Capitalize that,” or “numeral” to format your next phrase as a number.</li>
+            <li><strong>Deleting Text:</strong> Use commands such as “Delete that” to remove the last thing you typed or “Delete all” to erase everything and start over.</li>
+            <li><strong>Grid Overlays:</strong> Say "Show grid" to display a numbered grid on your screen, or "Show window grid" to limit the grid to the active window. Say a grid number to subdivide the area further.</li>
+        </ul>
+
+        <h4>Steps to Activate Voice Control on iPhone:</h4>
+        <p><strong>Path:</strong> Go to the Settings application → "Accessibility" control → Accessibility screen → Toggle the Voice Control button.</p>
+
+        <p>For a detailed list of commands, please refer to the official documentation: <a href="https://support.apple.com/guide/iphone/use-voice-control-iph3e8b86e99/ios" target="_blank">Use Voice Control on your iPhone</a></p>
+
+        <h4>WCAG Mapping for Voice Control:</h4>
+        <ul>
+            <li>WCAG 4.2.9 – Execution of Available Actions</li>
+            <li>WCAG 4.3.1 – No Disruption of Accessibility Features</li>
+        </ul>
+        <br><br>
+        <h2>8. Target Size</h2>
+        <p>To check target size issues, we use a screen ruler app developed by Info Enum software. We manually verify the issue by taking screenshots and checking the size of the icons, text content, etc., which should be equal to 24px * 24px (length and width), using the horizontal and vertical ruler present in the application.</p>
+
+        <h4>Steps to Check Target Size on the Scaler Application:</h4>
+        <ol>
+            <li><strong>Download:</strong> Install the Screen Ruler app from the App Store on apple.com.</li>
+            <li><strong>Launch:</strong> Open the app and provide all the necessary permissions. The main interface will appear.</li>
+            <li><strong>Import:</strong> Capture a screenshot of your screen and upload it into the Screen Ruler app.</li>
+            <li><strong>Measure:</strong> Use the app's dual scales to evaluate the target size in your screenshot.</li>
+            <li><strong>Adjust:</strong> Zoom in on the screenshot, and the ruler will automatically adjust to the zoom level.</li>
+            <li><strong>Save:</strong> After verifying the measurements, take another screenshot to save your results.</li>
+        </ol>
+
+        <h4>Exceptions of Target Size:</h4>
+        <ul>
+            <li><strong>Spacing:</strong> For undersized targets (less than 24px by 24px), they should be arranged in such a way that a 24px diameter circle does not overlap with other targets.</li>
+            <li><strong>Equivalent:</strong> If a target is smaller than 24px by 24px but there's another control fulfilling the same function, it can be exempted under the 'Equivalent' exception.</li>
+            <li><strong>Inline:</strong> This criterion does not apply to inline targets within sentences or where target size is constrained by line height.</li>
+            <li><strong>Essential:</strong> The size and spacing of targets are critical for conveying information, such as in digital maps or interactive data visualizations.</li>
+        </ul>
+
+        <p><strong>Reference/Source Link:</strong> <a href="https://apps.apple.com/us/app/screen-ruler/id1461103349" target="_blank">Scaler</a></p>
+
+        <h4>WCAG Mapping for Target Size:</h4>
+        <ul>
+            <li>WCAG 2.5.8 – Target Size (Minimum)</li>
+        </ul>
+
+    </section>
+    <footer style="background-color: #333; color: #fff; padding: 20px 0; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+    
+                <!-- About Section -->
+                <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                    <h3>About Us</h3>
+                    <p>We are dedicated to providing excellent web solutions and accessibility features for all users.</p>
+                </div>
+    
+                <!-- Quick Links Section -->
+                <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#home" style="color: #fff; text-decoration: none;">Home</a></li>
+                        <li><a href="#services" style="color: #fff; text-decoration: none;">Services</a></li>
+                        <li><a href="#contact" style="color: #fff; text-decoration: none;">Contact</a></li>
+                        <li><a href="#privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact Section -->
+                <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                    <h3>Contact Us</h3>
+                    <p>Email: contact@yourwebsite.com</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+    
+                <!-- Social Media Section -->
+            </div>
+    
+            <!-- Footer Bottom -->
+            <div style="margin-top: 20px;">
+                <p>&copy; 2024 Your Company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+
+</body>
+</html>
